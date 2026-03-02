@@ -90,7 +90,7 @@ Shell scripts triggered by Claude Code tool events. Place in `hooks/pre-tool/` o
 
 | Name | File | Trigger | Description | Author |
 |------|------|---------|-------------|--------|
-| _(none yet)_ | | | | |
+| check-naming-conventions | [`hooks/pre-tool/check-naming-conventions.sh`](hooks/pre-tool/check-naming-conventions.sh) | Write, Edit | Checks file naming conventions before Claude writes or edits a file. Enforces kebab-case (JS/TS), snake_case (Python), PascalCase (Java/components). Configurable via `.claude/naming-conventions.json`. | adharsh2208vthink |
 
 ### post-tool
 
@@ -106,7 +106,8 @@ CLAUDE.md snippets for always-follow instructions. Place files in `rules/`.
 
 | Name | File | Description | Author |
 |------|------|-------------|--------|
-| _(none yet)_ | | | |
+| file-organization | [`rules/file-organization.md`](rules/file-organization.md) | Instructs Claude to save plan/doc files to `docs/` and follow existing directory structure for new source files. | adharsh2208vthink |
+| planning-collaboration | [`rules/planning-collaboration.md`](rules/planning-collaboration.md) | Controls Claude's behaviour in Plan Mode — wait for user approval, share only meaningful findings, avoid auto-proceeding. | adharsh2208vthink |
 
 ---
 
