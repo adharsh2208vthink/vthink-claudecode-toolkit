@@ -66,15 +66,21 @@ Then ask:
 > - PRs with code reviews (team reviews your changes)
 > - Solo / trunk-based (you commit directly or merge your own PRs)"
 
-**Question 3 — Pain points:**
+**Question 3 — Pain points (part A):**
 > "What slows you down the most? Pick any that apply:
 > - Writing or fixing tests
-> - Reviewing PRs or writing review comments
 > - Crafting commit messages
 > - Building API endpoints or CRUD scaffolding
+> - Writing QA / acceptance criteria"
+
+**Question 3 — Pain points (part B):**
+> "Anything else that slows you down?
+> - Reviewing PRs or writing review comments
 > - Setting up new features end-to-end
-> - Writing QA / acceptance criteria
-> - Something else?"
+> - None of the above
+> - Something else (tell me in chat)"
+
+> Note: `AskUserQuestion` supports a maximum of 4 options. Split pain points across two questions to stay within the limit.
 
 Store the answers as:
 - `DEV_ROLE` (frontend / backend / fullstack / devops / data / other)
@@ -138,13 +144,13 @@ Use this logic to decide what to recommend:
 |-----------|-----------|
 | `DEV_ROLE` includes backend OR pain point includes endpoints | `skills/backend/generate-endpoint.md` |
 | `COLLAB_STYLE` = pr-based OR pain point includes PRs | `skills/workflow/qa-guide.md` |
-| Pain point includes commit messages OR shipping | `skills/workflow/ship.md` |
-| Pain point includes commit messages (without shipping) | `skills/workflow/give-me-a-commit-message.md` |
+| Pain point includes commit messages | `skills/workflow/ship.md` |
 | `COLLAB_STYLE` = pr-based | `skills/workflow/commit-push.md` |
 | Pain point includes tests | *(test-runner agent covers this)* |
 | Pain point includes PRs/review | `skills/workflow/conventions-check.md` |
 | Pain point includes acceptance criteria / BDD | `skills/workflow/bdd-gherkin.md` |
 | Always offer | `skills/workflow/anonymize-prompt.md` |
+| Always optional | `skills/workflow/give-me-a-commit-message.md` — lighter alternative to `ship` (suggests a message, no push) |
 
 ### Agents to recommend:
 
@@ -170,10 +176,11 @@ Use this logic to decide what to recommend:
 
 | Condition | Recommend |
 |-----------|-----------|
-| React/Next.js detected | `settings-templates/react.json` |
-| Node.js/Express/NestJS detected | `settings-templates/nodejs.json` |
+| React/Next.js detected (no backend) | `settings-templates/react.json` |
+| Node.js/Express/NestJS detected (no React) | `settings-templates/nodejs.json` |
 | Java/Spring Boot detected | `settings-templates/java-spring.json` |
-| Python detected | `settings-templates/python.json` |
+| Python detected (no React) | `settings-templates/python.json` |
+| Mixed stack (e.g., Python + React, Node + React) | No exact template available — show both closest matches and say: "No single template covers your full stack. Here are the two closest — pick the one that matches your primary layer, or merge fields from both." |
 
 Present recommendations in this format:
 
@@ -352,9 +359,11 @@ Tools installed:
 
 Your job:
 1. Write the full guide content as Markdown (see structure below)
-2. Convert it to PDF using pandoc if available (`pandoc --version`). If not available, save as .md and tell the user
-3. Save to: [SAVE_PATH]
-4. Report back: "Your starter guide is ready at [SAVE_PATH]"
+2. Check if pandoc is available (`pandoc --version`)
+3. If pandoc is available: convert to PDF and save to a TEMP path (/tmp/claude-starter-guide.pdf)
+   If pandoc is not available: save as Markdown to a TEMP path (/tmp/claude-starter-guide.md)
+4. DO NOT save to the final destination — the user must confirm first
+5. Report back with: the temp path, the final intended path ([SAVE_PATH]), and whether it's a PDF or .md
 
 Guide structure:
 
@@ -397,12 +406,12 @@ Short section on why .claude/ file size matters, the /memory command, and when t
 Include the actual size check result from the install: [CONTEXT_SIZE_KB] KB.
 ```
 
-When the sub-agent completes, it will notify the main conversation. At that point, confirm with the user:
+When the sub-agent completes, it will notify the main conversation with the temp path and final path. At that point, ask the user:
 
-> "Your starter guide is ready at `[SAVE_PATH]`. Shall I save it there?"
+> "Your starter guide is ready. Shall I save it to `[SAVE_PATH]`?"
 
-- If yes — the sub-agent has already written it. Confirm: *"Done! Open `[SAVE_PATH]` to read your guide."*
-- If no — tell them the content was generated but not saved, and they can ask to regenerate at any time.
+- If yes — run `cp /tmp/claude-starter-guide.pdf [SAVE_PATH]` (or `.md` variant). Confirm: *"Saved! Open `[SAVE_PATH]` to read your guide."*
+- If no — respond: *"No problem — it hasn't been saved. Let me know if you'd like it saved somewhere else."* The temp file will be cleaned up automatically.
 
 ---
 
