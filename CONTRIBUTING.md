@@ -36,7 +36,7 @@ tags: [tag1, tag2]
 
 **Valid categories:**
 - Agents: `core-development`, `code-review`, `testing`, `devops`
-- Skills: `frontend`, `backend`, `data`, `workflow`
+- Skills: `frontend`, `backend`, `data`
 - Commands: `git`, `quality`, `generation`, `devops`, `utility`
 - Hooks: `pre-tool`, `post-tool`
 
@@ -85,7 +85,7 @@ Fill in all frontmatter fields and replace placeholder sections with real conten
 2. Create a branch: `git checkout -b add/my-skill-name`
 3. Add your contribution in the correct folder using the template
 4. Fill out the PR template when opening the pull request
-5. **Adharsh** (@adharsh2208vthink) or **Baskar** will review your PR
+5. A teammate will review within a few business days
 
 ---
 
