@@ -34,6 +34,7 @@ The wizard will:
 5. Show you a tailored list of recommended items with reasons
 6. Confirm before installing anything
 7. Optionally scaffold a starter `CLAUDE.md` for your project
+8. Optionally generate a personalised PDF starter guide covering every tool you installed
 
 > If you prefer to install items manually, continue with the sections below.
 

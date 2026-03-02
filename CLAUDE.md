@@ -19,7 +19,7 @@ This file provides Claude Code with context about this repository's structure an
 
 ```
 commands/               # Slash commands
-agents/                 # Sub-agents by category (core-development, code-review, testing, devops)
+agents/                 # Sub-agents by category (core-development, code-review, testing, devops, utility)
 skills/                 # Skills by category (frontend, backend, data, workflow)
 hooks/pre-tool/         # PreToolUse hook scripts
 hooks/post-tool/        # PostToolUse hook scripts
