@@ -8,7 +8,7 @@ Thanks for contributing! This toolkit grows through shared expertise — the mor
 
 - **New Skill** — domain knowledge or workflow automation for Claude to follow
 - **New Agent** — a specialized sub-agent with a defined role and responsibilities
-- **New Command** — a slash command (`.md` file in `.claude/commands/`)
+- **New Command** — a slash command (`.md` file in `commands/`)
 - **New Hook** — a shell script triggered by Claude Code events
 - **New MCP Config** — a ready-to-paste MCP server snippet for `.claude/settings.json`
 - **New Settings Template** — a `.claude/settings.json` starter for a project type
@@ -38,7 +38,7 @@ tags: [tag1, tag2]
 ```
 
 **Valid categories:**
-- Agents: `core-development`, `code-review`, `testing`, `devops`
+- Agents: `core-development`, `code-review`, `testing`, `devops`, `utility`
 - Skills: `frontend`, `backend`, `data`, `workflow`
 - Commands: `git`, `quality`, `generation`, `devops`, `utility`
 - Hooks: `pre-tool`, `post-tool`
@@ -58,7 +58,7 @@ tags: [tag1, tag2]
 |-------------------|--------|
 | Agent | `agents/<category>/` |
 | Skill | `skills/<category>/` |
-| Slash Command | `.claude/commands/` |
+| Slash Command | `commands/` |
 | Pre-tool Hook | `hooks/pre-tool/` |
 | Post-tool Hook | `hooks/post-tool/` |
 | CLAUDE.md snippet | `rules/` |
@@ -80,7 +80,7 @@ cp templates/agent-template.md agents/<category>/my-agent.md
 cp templates/skill-template.md skills/<category>/my-skill.md
 
 # For a new slash command
-cp templates/command-template.md .claude/commands/my-command.md
+cp templates/command-template.md commands/my-command.md
 ```
 
 Fill in all frontmatter fields and replace placeholder sections with real content.

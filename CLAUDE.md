@@ -8,7 +8,7 @@ This file provides Claude Code with context about this repository's structure an
 
 - **Agents** — sub-agent definitions with specific roles and responsibilities
 - **Skills** — workflow and domain knowledge prompts
-- **Slash Commands** — `.md` files in `.claude/commands/` invocable as `/command-name`
+- **Slash Commands** — `.md` files in `commands/` invocable as `/command-name` once installed into a project's `.claude/commands/`
 - **Hooks** — shell scripts triggered by Claude Code tool events
 - **Rules** — CLAUDE.md snippets that can be copy-pasted into project-level CLAUDE.md files
 - **MCP Configs** — ready-to-paste MCP server snippets for `.claude/settings.json`
@@ -18,7 +18,7 @@ This file provides Claude Code with context about this repository's structure an
 ## Directory Structure
 
 ```
-.claude/commands/       # Slash commands
+commands/               # Slash commands
 agents/                 # Sub-agents by category (core-development, code-review, testing, devops)
 skills/                 # Skills by category (frontend, backend, data, workflow)
 hooks/pre-tool/         # PreToolUse hook scripts
@@ -43,7 +43,7 @@ Read `CONTRIBUTING.md` before doing anything else. It contains the folder placem
 ### Step 2: Use the right template
 - New skill → copy `templates/skill-template.md` to `skills/<category>/`
 - New agent → copy `templates/agent-template.md` to `agents/<category>/`
-- New command → copy `templates/command-template.md` to `.claude/commands/`
+- New command → copy `templates/command-template.md` to `commands/`
 - New workflow → follow the same frontmatter structure in `workflows/`
 - New MCP config → use the JSON format with `_readme`, `_setup`, and `mcpServers` fields (see existing files in `mcp/`)
 - New settings template → use the JSON format with `_readme`, `_usage`, and `permissions` fields (see existing files in `settings-templates/`)
@@ -87,6 +87,23 @@ category: <category>
 tags: [tag1, tag2]
 ---
 ```
+
+## Onboarding New Developers
+
+The recommended way for a developer to set up this toolkit in a new project is through the **setup-wizard** agent (`agents/utility/setup-wizard.md`).
+
+Install it once at the user level so it's available in every project:
+
+```bash
+mkdir -p ~/.claude/agents
+cp agents/utility/setup-wizard.md ~/.claude/agents/
+```
+
+Then in any project, the developer simply says: *"Set up the vthink toolkit for this project"* and Claude delegates to the wizard automatically. No per-project copy of the wizard is needed.
+
+The wizard handles: role/workflow discovery, project scanning, tailored recommendations, confirmation, and installation.
+
+---
 
 ## Contribution Standards
 

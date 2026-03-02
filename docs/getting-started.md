@@ -11,6 +11,34 @@ This guide walks you through finding, installing, and using components from the 
 
 ---
 
+## Recommended: Use the Setup Wizard
+
+The fastest way to get started is the **setup-wizard** agent. It scans your project, asks a few questions about your role and workflow, and installs only the toolkit items that are relevant to you.
+
+**One-time setup** (installs the wizard globally so it's available in every project):
+
+```bash
+mkdir -p ~/.claude/agents
+cp path/to/vthink-claudecode-toolkit/agents/utility/setup-wizard.md ~/.claude/agents/
+```
+
+Then open any project in Claude Code and say:
+
+> *"Set up the vthink toolkit for this project"*
+
+The wizard will:
+1. Ask about your role (frontend / backend / full-stack / devops)
+2. Ask about your workflow (PR-based or solo)
+3. Ask what slows you down
+4. Scan your project for tech stack, CI, and database signals
+5. Show you a tailored list of recommended items with reasons
+6. Confirm before installing anything
+7. Optionally scaffold a starter `CLAUDE.md` for your project
+
+> If you prefer to install items manually, continue with the sections below.
+
+---
+
 ## Finding the Right Component
 
 Browse the repository:
@@ -19,7 +47,7 @@ Browse the repository:
 |---------------|-------|
 | A specialized Claude persona (e.g., "code reviewer") | [`agents/`](../agents/) |
 | Domain or workflow automation (e.g., "generate an API endpoint") | [`skills/`](../skills/) |
-| A slash command (e.g., `/deploy-check`) | [`.claude/commands/`](../.claude/commands/) |
+| A slash command (e.g., `/deploy-check`) | [`commands/`](../commands/) |
 | A pre/post tool hook | [`hooks/`](../hooks/) |
 | An always-follow rule snippet | [`rules/`](../rules/) |
 
@@ -42,12 +70,12 @@ cp vthink-claudecode-toolkit/skills/backend/skill-name.md \
 
 ## Installing a Slash Command
 
-1. Find the command in `.claude/commands/command-name.md`
+1. Find the command in `commands/command-name.md`
 2. Copy it into your project's commands directory:
 
 ```bash
 mkdir -p your-project/.claude/commands
-cp vthink-claudecode-toolkit/.claude/commands/command-name.md \
+cp vthink-claudecode-toolkit/commands/command-name.md \
    your-project/.claude/commands/
 ```
 
