@@ -22,24 +22,36 @@ Browse the full catalog: **[CATALOG.md](CATALOG.md)**
 
 ---
 
-## Quick Install
+## Getting Started
 
-### Copy a single skill into your project
+### Recommended: Use the setup wizard
+
+Clone this repo, then run `/setup-toolkit` inside Claude Code in your project:
 
 ```bash
-cp path/to/vthink-claudecode-toolkit/skills/backend/my-skill.md \
+git clone https://github.com/adharsh2208vthink/vthink-claudecode-toolkit ~/git/vthink-claudecode-toolkit
+cd your-project
+# Open Claude Code and run:
+/setup-toolkit
+```
+
+Claude will scan your project, recommend the relevant skills/agents/commands/hooks, and install only what makes sense for your stack — no manual file copying needed.
+
+### Manual install
+
+**Single skill:**
+```bash
+cp vthink-claudecode-toolkit/skills/backend/my-skill.md \
    your-project/.claude/skills/
 ```
 
-### Copy all slash commands into your project
-
+**Single slash command:**
 ```bash
-cp vthink-claudecode-toolkit/.claude/commands/*.md \
+cp vthink-claudecode-toolkit/.claude/commands/my-command.md \
    your-project/.claude/commands/
 ```
 
-### Use a hook
-
+**Hook:**
 ```bash
 cp vthink-claudecode-toolkit/hooks/pre-tool/my-hook.sh \
    your-project/.claude/hooks/pre-tool/

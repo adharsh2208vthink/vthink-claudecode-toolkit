@@ -66,7 +66,7 @@ Invocable via `/command-name` in Claude Code. Place files in `.claude/commands/`
 
 | Name | Invocation | File | Description | Author |
 |------|-----------|------|-------------|--------|
-| _(none yet)_ | | | | |
+| setup-toolkit | `/setup-toolkit` | [`.claude/commands/setup-toolkit.md`](.claude/commands/setup-toolkit.md) | ⚗️ DRAFT — Scans the current project, recommends relevant toolkit items, and installs approved ones into `.claude/`. | adharsh2208vthink |
 
 ---
 

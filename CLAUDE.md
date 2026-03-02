@@ -27,7 +27,15 @@ docs/                   # Documentation
 .github/                # PR and issue templates
 ```
 
-## When Helping Contributors
+## When a Developer Wants to Install Toolkit Items Into Their Project
+
+If someone is working in **their own project** (not this repo) and wants to use toolkit items:
+
+1. **Point them to `/setup-toolkit` first** — this is the recommended way to install. It scans their project, recommends relevant items, and copies them automatically.
+2. If they prefer manual install, refer them to `docs/getting-started.md` for copy commands.
+3. After install, remind them to restart Claude Code so new skills/agents/commands are loaded.
+
+## When Helping Contributors Add Something New to the Toolkit
 
 If someone asks you to help create a new skill, agent, or command in this repo:
 
@@ -36,6 +44,7 @@ If someone asks you to help create a new skill, agent, or command in this repo:
 3. Ensure all frontmatter fields are filled in: `name`, `description`, `version`, `author`, `category`, `tags`
 4. Check that no project-specific or sensitive information is included
 5. File naming must be kebab-case
+6. Update `CATALOG.md` — mandatory for every contribution
 
 ## Frontmatter Schema
 
