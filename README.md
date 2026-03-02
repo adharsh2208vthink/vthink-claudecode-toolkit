@@ -16,7 +16,7 @@ Browse the full catalog: **[CATALOG.md](CATALOG.md)**
 |----------|-------|----------|
 | Agents | — | [`agents/`](agents/) |
 | Skills | — | [`skills/`](skills/) |
-| Slash Commands | — | [`.claude/commands/`](.claude/commands/) |
+| Slash Commands | — | [`commands/`](commands/) |
 | Hooks | — | [`hooks/`](hooks/) |
 | Rules | — | [`rules/`](rules/) |
 | MCP Configs | — | [`mcp/`](mcp/) |
@@ -27,23 +27,35 @@ Browse the full catalog: **[CATALOG.md](CATALOG.md)**
 
 ## Quick Install
 
-### Copy a single skill into your project
+### The fast way — let the setup wizard do it
+
+Install the setup wizard once, globally. It becomes available in every project on your machine:
 
 ```bash
+mkdir -p ~/.claude/agents
+cp path/to/vthink-claudecode-toolkit/agents/utility/setup-wizard.md ~/.claude/agents/
+```
+
+Then open any project in Claude Code and say:
+
+> *"Set up the vthink toolkit for this project"*
+
+The wizard will ask you a few questions, scan your project, and install only what's relevant to *you*.
+
+### Manual install
+
+If you prefer to pick and install items yourself:
+
+```bash
+# Copy a single skill
 cp path/to/vthink-claudecode-toolkit/skills/backend/my-skill.md \
    your-project/.claude/skills/
-```
 
-### Copy all slash commands into your project
-
-```bash
-cp vthink-claudecode-toolkit/.claude/commands/*.md \
+# Copy all slash commands
+cp vthink-claudecode-toolkit/commands/*.md \
    your-project/.claude/commands/
-```
 
-### Use a hook
-
-```bash
+# Copy and enable a hook
 cp vthink-claudecode-toolkit/hooks/pre-tool/my-hook.sh \
    your-project/.claude/hooks/pre-tool/
 chmod +x your-project/.claude/hooks/pre-tool/my-hook.sh
@@ -57,12 +69,13 @@ chmod +x your-project/.claude/hooks/pre-tool/my-hook.sh
 
 ```
 vthink-claudecode-toolkit/
-├── .claude/commands/       # Slash commands — invoke with /command-name in Claude Code
+├── commands/               # Slash commands — copy to your-project/.claude/commands/
 ├── agents/                 # Sub-agent definitions, organized by category
 │   ├── core-development/
 │   ├── code-review/
 │   ├── testing/
-│   └── devops/
+│   ├── devops/
+│   └── utility/            # Toolkit-level agents (e.g., setup-wizard)
 ├── skills/                 # Skill files — domain/workflow knowledge for Claude
 │   ├── frontend/
 │   ├── backend/

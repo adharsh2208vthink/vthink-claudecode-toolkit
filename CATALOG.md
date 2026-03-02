@@ -34,6 +34,12 @@ Sub-agents with defined roles and responsibilities. Place files in `agents/<cate
 |------|------|-------------|--------|
 | _(none yet)_ | | | |
 
+### utility
+
+| Name | File | Description | Author |
+|------|------|-------------|--------|
+| setup-wizard | [`agents/utility/setup-wizard.md`](agents/utility/setup-wizard.md) | Conversational onboarding agent that scans a project, asks about the developer's role and workflow, then recommends and installs tailored toolkit items. | adharsh2208vthink |
+
 ---
 
 ## Skills
@@ -74,11 +80,11 @@ Workflow and domain knowledge prompts. Place files in `skills/<category>/`.
 
 ## Slash Commands
 
-Invocable via `/command-name` in Claude Code. Place files in `.claude/commands/`.
+Invocable via `/command-name` in Claude Code. Place files in `commands/`.
 
 | Name | Invocation | File | Description | Author |
 |------|-----------|------|-------------|--------|
-| dev-server | `/dev-server <start\|stop\|restart>` | [`.claude/commands/dev-server.md`](.claude/commands/dev-server.md) | Manage the local dev server. Auto-detects start command and port from package.json. | adharsh2208vthink |
+| dev-server | `/dev-server <start\|stop\|restart>` | [`commands/dev-server.md`](commands/dev-server.md) | Manage the local dev server. Auto-detects start command and port from package.json. | adharsh2208vthink |
 
 ---
 
