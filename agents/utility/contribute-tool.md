@@ -55,9 +55,9 @@ Before reading or touching the file, say:
 >
 > Are you sure the tool file doesn't contain anything that is confidential, proprietary, sensitive, or client-specific?"
 
-Offer two options:
-- **No, let me check first** — I'll come back once I've reviewed it
+Use AskUserQuestion to present two options:
 - **Yes, I am sure** — nothing confidential, proprietary, sensitive, or client-specific in there
+- **No, let me check first** — I'll come back once I've reviewed it
 
 If the contributor says **No, let me check first**:
 - Respond: "Thank you. You can come back here once you are sure the tool doesn't contain anything confidential, proprietary, sensitive, or client-specific."
@@ -117,7 +117,7 @@ Confidentiality scan results:
 >
 > I know you confirmed the tool was clean, so these may be false positives. Please take a look and let me know."
 
-Offer two options:
+Use AskUserQuestion to present two options:
 - **These are false positives. They are safe to ignore.**
 - **You are right. I will clean it up and come back.**
 
@@ -162,17 +162,17 @@ If all fields are present and valid, say:
 For any missing or placeholder fields, say:
 > "A few frontmatter fields are missing. I will ask you about each one so we can fill them in correctly."
 
-Then handle each missing field:
-- `name`: suggest a kebab-case version of the filename — "I'd suggest `<suggested-name>`. Does that work, or would you like a different name?"
-- `description`: suggest a one-line description based on the file content — "Based on what I read, I'd describe this as: `<suggested description>`. Does that work, or would you like to rephrase it?"
+Then handle each missing field one at a time using AskUserQuestion:
+- `name`: suggest a kebab-case version of the filename — use AskUserQuestion with the suggestion as one option and "Use a different name" as the other
+- `description`: suggest a one-line description based on the file content — use AskUserQuestion with the suggestion as one option and "Rephrase it" as the other
 - `version`: default silently to `1.0.0` — no need to ask
-- `author`: say "I need your GitHub username for the `author` field and the CATALOG.md row. I will run `git config user.name` and `git config user.email` to look it up." — run both commands via Bash, then confirm: "I believe your GitHub username is `<inferred>`. Is that right?" — if the commands return nothing useful, ask: "What is your GitHub username?"
-- `category`: the type is already known from Phase 4 — use the source path to infer the sub-category (e.g. `agents/utility/` → `utility`, `skills/backend/` → `backend`) — confirm: "I'd categorise this as `<inferred category>`. Is that right?" — only fall back to listing valid options if the path gives no useful signal
-- `tags`: suggest 2–3 based on content — "I'd suggest these tags: `[tag1, tag2]`. Feel free to confirm or suggest different ones."
+- `author`: say "I need your GitHub username for the `author` field and the CATALOG.md row. I will run `git config user.name` and `git config user.email` to look it up." — run both commands via Bash, then use AskUserQuestion to confirm the inferred value with "Yes, that's right" and "No, use a different username" as options — if the commands return nothing useful, ask directly with a text input prompt
+- `category`: the type is already known from Phase 4 — use the source path to infer the sub-category (e.g. `agents/utility/` → `utility`, `skills/backend/` → `backend`) — use AskUserQuestion to confirm with "Yes, that's right" and "No, use a different category" as options — only fall back to listing valid options if the path gives no useful signal
+- `tags`: suggest 2–3 based on content — use AskUserQuestion with the suggestion as one option and "Use different tags" as the other
 
 **For `.sh` files (hooks):**
 
-Skip frontmatter. The hook event is already inferred in Phase 4 — confirm it: "This is a `<PreToolUse|PostToolUse>` hook. Is that right?" Then suggest a one-line description based on the script content: "I'd describe this as: `<suggested description>`. Does that work?"
+Skip frontmatter. The hook event is already inferred in Phase 4 — use AskUserQuestion to confirm: "Is this a PreToolUse or PostToolUse hook?" with both as options. Then suggest a one-line description based on the script content and use AskUserQuestion with the suggestion and "Rephrase it" as options.
 
 ---
 
@@ -212,7 +212,9 @@ Before writing anything, present a clear summary. Say:
   📋 CATALOG.md:  will add a row to the "utility" agents table
 ```
 
-> "Does everything look good? Let me know and I will go ahead."
+Use AskUserQuestion to ask: "Does everything look good?" with two options:
+- **Yes, go ahead**
+- **No, I want to change something**
 
 Wait for explicit confirmation before writing anything.
 
@@ -241,7 +243,7 @@ Wait for explicit confirmation before writing anything.
 
 ## Tools Available
 
-Read, Write, Edit, Bash, Glob
+Read, Write, Edit, Bash, Glob, AskUserQuestion
 
 ## Examples
 
