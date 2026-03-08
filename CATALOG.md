@@ -38,6 +38,7 @@ Sub-agents with defined roles and responsibilities. Place files in `agents/<cate
 
 | Name | File | Description | Author |
 |------|------|-------------|--------|
+| contribute-tool | [`agents/utility/contribute-tool.md`](agents/utility/contribute-tool.md) | Guides contributors through safely importing an existing tool into the vThink Claude Code Toolkit — with confidentiality scanning, frontmatter completion, and CATALOG.md update. | adharsh2208vthink |
 | setup-wizard | [`agents/utility/setup-wizard.md`](agents/utility/setup-wizard.md) | Conversational onboarding agent that scans a project, asks about the developer's role and workflow, then recommends and installs tailored toolkit items. | adharsh2208vthink |
 
 ---
