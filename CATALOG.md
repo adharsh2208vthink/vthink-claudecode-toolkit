@@ -114,6 +114,7 @@ CLAUDE.md snippets for always-follow instructions. Place files in `rules/`.
 |------|------|-------------|--------|
 | file-organization | [`rules/file-organization.md`](rules/file-organization.md) | Instructs Claude to save plan/doc files to `docs/` and follow existing directory structure for new source files. | adharsh2208vthink |
 | planning-collaboration | [`rules/planning-collaboration.md`](rules/planning-collaboration.md) | Controls Claude's behaviour in Plan Mode — wait for user approval, share only meaningful findings, avoid auto-proceeding. | adharsh2208vthink |
+| professional-friendly-tone | [`rules/professional-friendly-tone.md`](rules/professional-friendly-tone.md) | Opt-in communication tone for vThink Claude Code Toolkit agents — warm, direct, and professional without being intimidating. | adharsh2208vthink |
 
 ---
 
